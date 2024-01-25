@@ -74,7 +74,7 @@ class middleman_req(commands.Cog):
         >> checking calls a function within my devs code
         """
 
-        confirmEmbed = self.create_embed.confirmMmReq()
+        confirmEmbed = await self.create_embed.confirmMmReq()
         confirmView = confirmView()
         response_message = await ctx.reply(embed = confirmEmbed, view = confirmView)
         await confirmView.wait()

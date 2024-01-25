@@ -65,7 +65,7 @@ async def sync(ctx: commands.Context, guilds: commands.Greedy[discord.Object], s
 
 
 @bot.hybrid_command()
-@bot.is_owner()
+@commands.is_owner()
 async def reload(ctx, cog: str):
     try:
         await bot.reload_extension(f"cogs.{cog}")
