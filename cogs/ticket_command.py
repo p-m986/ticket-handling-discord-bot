@@ -10,7 +10,7 @@ allowed_channel_ids=[1194652099494035558, 1194653134811832451]
 
 
 class confirmView(discord.ui.View):
-    def __init__(self, author, target_user:discord.Member, res1, res2, *, timeout=20):
+    def __init__(self, *, timeout=20):
         super().__init__(timeout=timeout)
         self.create_embed = create_embed()
 
@@ -32,8 +32,6 @@ class confirmView(discord.ui.View):
 
             button.style = discord.ButtonStyle.green
 
-            # resultEmbed = await self.create_embed.createDicerollresult()
-            # await interaction.followup.send(embed = resultEmbed, view = self)
             self.stop()
     
     
@@ -73,9 +71,10 @@ class middleman_req(commands.Cog):
         >checking... this may take 5 - 10 minutes
         >> checking calls a function within my devs code
         """
-
+        print("Got Command")
         confirmEmbed = await self.create_embed.confirmMmReq()
         confirmView = confirmView()
+        print("Got View object")
         response_message = await ctx.reply(embed = confirmEmbed, view = confirmView)
         await confirmView.wait()
         return
